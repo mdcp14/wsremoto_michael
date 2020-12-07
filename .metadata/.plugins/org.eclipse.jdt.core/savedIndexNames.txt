@@ -10,6 +10,7 @@ INDEX VERSION 1.131+C:\Users\987320520\Desktop\turma12c\wsremoto_michael\.metada
 3720716507.index
 2887631762.index
 858989570.index
+1372551170.index
 2922197066.index
 615226062.index
 4159017284.index
