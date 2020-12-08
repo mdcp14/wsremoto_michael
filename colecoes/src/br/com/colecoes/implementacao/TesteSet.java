@@ -18,14 +18,15 @@ public class TesteSet {
 		//Collectiton.sort(lista);
 		
 		/*
-		 * For each = quanod você não quer ou não pode utilizar um indice
+		 * For each = quando você não quer ou não pode utilizar um indice
 		 * */
 		
 		for (String cargo : lista  ) {
 			System.out.println("Cargo: " + cargo);
 					
 
-	}
+			}
 
-	}
+	  }
+ 
 }
