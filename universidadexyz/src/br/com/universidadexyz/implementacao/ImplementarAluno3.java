@@ -18,10 +18,6 @@ public class ImplementarAluno3 {
 		
 		
 		
-		
-		
-		
-		
 	}
 
 }
