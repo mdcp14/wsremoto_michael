@@ -1,11 +1,18 @@
 package br.com.projetofinal.beans;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity  
 @Table(name="tb_musica")
@@ -14,66 +21,30 @@ public class Musica {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name="id")
-	private int ID;
+	private int id;
 	
-	@Column(name="titulo", length=60)
+	@Column(name="titulo", length=40)
 	private String titulo;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="cadastro")
+	private Date cadastro;
 	
 	@Column(name="lancamento", length=50)
 	private String lancamento;
 	
-	@Column(name="cadastro", length=100)
-	private String cadastro;
 	
-	@Column(name="idArtista", length=80)
-	private String idArtista;
-
+	@ManyToOne //esse é o lado "n" do SGBD
+	@JsonIgnoreProperties("musicas")
+	private Artista artista;
 	
 	
-	public void setAll(int iD, String titulo, String lancamento, String cadastro, String idArtista) {
-		//super();
-		ID = iD;
-		this.titulo = titulo;
-		this.lancamento = lancamento;
-		this.cadastro = cadastro;
-		this.idArtista = idArtista;
-	}
-	
-	
-	public void getAll(int iD, String titulo, String lancamento, String cadastro, String idArtista) {
-		//super();
-		ID = iD;
-		this.titulo = titulo;
-		this.lancamento = lancamento;
-		this.cadastro = cadastro;
-		this.idArtista = idArtista;
+	public int getId() {
+		return id;
 	}
 
-	public Musica() {
-		super();
-	}
-
-	public Musica(int iD, String titulo, String lancamento, String cadastro, String idArtista) {
-		super();
-		ID = iD;
-		this.titulo = titulo;
-		this.lancamento = lancamento;
-		this.cadastro = cadastro;
-		this.idArtista = idArtista;
-	}
-
-	@Override
-	public String toString() {
-		return "Musica [ID=" + ID + ", titulo=" + titulo + ", lancamento=" + lancamento + ", cadastro=" + cadastro
-				+ ", idArtista=" + idArtista + "]";
-	}
-
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitulo() {
@@ -92,26 +63,37 @@ public class Musica {
 		this.lancamento = lancamento;
 	}
 
-	public String getCadastro() {
+	public Date getCadastro() {
 		return cadastro;
 	}
 
-	public void setCadastro(String cadastro) {
+	public void setCadastro(Date cadastro) {
 		this.cadastro = cadastro;
 	}
 
-	public String getIdArtista() {
-		return idArtista;
+
+
+	public Musica(int id, String titulo, String lancamento, Date cadastro, String idArtista) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.lancamento = lancamento;
+		this.cadastro = cadastro;
+		
 	}
 
-	public void setIdArtista(String idArtista) {
-		this.idArtista = idArtista;
+	public void getAll(int id, String titulo, String lancamento, Date cadastro, String idArtista) {
+		//super();
+		this.id = id;
+		this.titulo = titulo;
+		this.lancamento = lancamento;
+		this.cadastro = cadastro;
+		
 	}
 	
 	
-	
-	
-	
-	
-	
+	public Musica() {
+		super();
+	}
+
 }
